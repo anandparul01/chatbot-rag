@@ -35,7 +35,7 @@ if uploaded_file:
 
 # Choose model
     st.divider()
-    model_name = st.text_input("LLM model path", value="TheBloke/wizardLM-7B-uncensored-GPTQ")
+    llm_model_name = st.text_input("LLM model path", value="TheBloke/wizardLM-7B-uncensored-GPTQ")
 
 
 
