@@ -37,7 +37,8 @@ if uploaded_file:
     st.divider()
     llm_model_name = st.text_input("LLM model path", value="TheBloke/wizardLM-7B-uncensored-GPTQ")
 
-
+    if "qa" not in st.session_state:
+        st.session_state.qa = None
 
     if st.button("Connect AI"):
         with st.spinner("Connecting AI ..."):
