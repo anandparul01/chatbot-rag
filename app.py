@@ -7,6 +7,7 @@ from langchain_community.llms import HuggingFacePipeline
 from langchain.chains import RetrievalQA
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
+from sentence_transformers import SentenceTransformer
 
 def load_llm(model_name):
     tokenizer = AutoTokenizer.from_pretrained(model_name)
