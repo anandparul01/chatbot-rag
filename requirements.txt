@@ -8,3 +8,4 @@ transformers
 torch
 sentence-transformers>=3.0.0
 huggingface-hub<0.26.0
+accelerate>=0.26.0
