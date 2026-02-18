@@ -29,7 +29,7 @@ if uploaded_file:
     st.success(f"Processed PDF : Total chunks are: {len(chunks)}")
 
 # Creating vector store
-    embed_model = HuggingFaceEmbeddings(model_name = "sentence_transformers/all-MiniLM-L6-v2")
+    embed_model = HuggingFaceEmbeddings(model_name = "sentence-transformers/all-MiniLM-L6-v2")
     db = FAISS.from_texts(chunks,embed_model)
     st.success("PDF processed successfully")
 
