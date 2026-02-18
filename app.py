@@ -44,7 +44,7 @@ if uploaded_file:
         with st.spinner("Connecting AI ..."):
             llm = load_llm(llm_model_name)
             st.session_state.qa = RetrievalQA.from_chain_type(llm = llm, retriever = db.as_retriever(search_kwargs ={"k":3}),
-                                                              return_source_document = True)
+                                                              return_source_documents = True)
             st.success("AI is connected")
 
 #Question and answer
