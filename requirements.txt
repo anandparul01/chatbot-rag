@@ -1,0 +1,12 @@
+streamlit
+pypdf
+langchain
+langchain-community
+faiss-cpu
+sentence-transformers
+transformers
+torch
+accelerate
+bitsandbytes
+optimum
+auto-gptq
