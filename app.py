@@ -10,8 +10,9 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 
 def load_llm(model_name):
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForCausalLM.from_pretrained(model_name)
-    hf_pipeline =  pipeline("text-generation", model=model, tokenizer=tokenizer, max_new_tokens =512, temperature = 0)
+    model = AutoModelForCausalLM.from_pretrained(model_name, device_map = "cpu",low_cpu_mem_usage = True,torch_dtype=torch.float32)
+
+    hf_pipeline =  pipeline("text-generation", model=model, tokenizer=tokenizer, max_new_tokens =256, temperature = 0)
     return HuggingFacePipeline(pipeline=hf_pipeline)
 
 # PDF uploading and Processing

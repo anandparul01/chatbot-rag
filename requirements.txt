@@ -1,12 +1,8 @@
 streamlit==1.31.0
 langchain
 langchain-community
-sentence-transformers
-faiss-cpu
+langchain-huggingface
 pypdf
+faiss-cpu
 transformers
-accelerate
-bitsandbytes
-optimum
-auto-gptq
 torch
