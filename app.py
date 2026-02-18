@@ -1,13 +1,11 @@
 import streamlit as st
-from pathlib import Path
 from pypdf import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-
 from langchain_community.vectorstores import FAISS
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.llms import HuggingFacePipeline
 from langchain.chains import RetrievalQA
-
+import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 
 def load_llm(model_name):
@@ -35,7 +33,7 @@ if uploaded_file:
 
 # Choose model
     st.divider()
-    llm_model_name = st.text_input("LLM model path", value="TheBloke/wizardLM-7B-uncensored-GPTQ")
+    llm_model_name = st.text_input("LLM model path", value="TinyLlama/TinyLlama-1.1B-Chat-v1.0")
 
     if "qa" not in st.session_state:
         st.session_state.qa = None
@@ -52,7 +50,7 @@ if uploaded_file:
         question = st.chat_input("Ask a question")
 
         if question:
-            response = st.session_state.qa({"query": question})
+            response = st.session_state.qa.invoke({"query": question})
 
             with st.chat_message("assistant"):
                 st.write(response["result"])
