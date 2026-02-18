@@ -2,7 +2,7 @@ import streamlit as st
 from pathlib import Path
 from pypdf import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.llms import HuggingFacePipeline
@@ -29,13 +29,13 @@ if uploaded_file:
     st.success(f"Processed PDF : Total chunks are: {len(chunks)}")
 
 # Creating vector store
-    embed_model = HuggingFaceEmbeddings(llm_model_name = "sentence_transformers/all-MiniLM-L6-v2")
+    embed_model = HuggingFaceEmbeddings(model_name = "sentence_transformers/all-MiniLM-L6-v2")
     db = FAISS.from_texts(chunks,embed_model)
     st.success("PDF processed successfully")
 
 # Choose model
     st.divider()
-    llm_model_name = st.text_input("LLM model path", value="TheBloke/wizardLM-7B-uncensored-GPTQ")
+    model_name = st.text_input("LLM model path", value="TheBloke/wizardLM-7B-uncensored-GPTQ")
 
 
 
